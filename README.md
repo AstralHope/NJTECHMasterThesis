@@ -6,15 +6,13 @@
 ## 环境安装
 windows使用请参考[中文 LaTeX 安装与使用](http://aff.whu.edu.cn/huangzh/%25E4%25B8%25AD%25E6%2596%2587LaTeX%25E5%25AE%2589%25E8%25A3%2585%25E4%25B8%258E%25E4%25BD%25BF%25E7%2594%25A8.pdf) 
 
-macOS下推荐先安装最新版本[TeX Live](https://tug.org/texlive/)（universal版本，已适配Apple Silicon），完成后已自动配置好环境并自带建议编辑器TeXShop，可再安装[texstudio](http://texstudio.sourceforge.net/)（尚未适配Apple Silicon，需通过Rosetta 2转移）获得更好的书写体验。
+macOS下推荐先安装最新版本[TeX Live](https://tug.org/texlive/)（universal版本，已适配Apple Silicon），完成后已自动配置好环境并自带简易编辑器TeXShop，可再安装[texstudio](http://texstudio.sourceforge.net/)（尚未适配Apple Silicon，需通过Rosetta 2转移）获得更好的书写体验。
 
 ## 使用
 参考下方黄正华老师的原始README文档，MasterTemplate-BACK.pdf为原始模版的输出结果，NJTECHMasterThesis-BACK.pdf为本人修改后的输出结果。成果编译得到与NJTECHMasterThesis-BACK.pdf即成果。
 
 以下为原始README文档：
 
-
-推荐
 
 > 1.适用 TeX Live 2015 软件环境. 安装 TeX Live 2015 之后需要立即更新.  
   TeX Live 安装及更新方法，参见：http://aff.whu.edu.cn/huangzh/

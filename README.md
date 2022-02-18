@@ -9,7 +9,7 @@ windows使用请参考[中文 LaTeX 安装与使用](http://aff.whu.edu.cn/huang
 macOS下推荐先安装最新版本[TeX Live](https://tug.org/texlive/)（universal版本，已适配Apple Silicon），完成后已自动配置好环境并自带简易编辑器TeXShop，可再安装[texstudio](http://texstudio.sourceforge.net/)（尚未适配Apple Silicon，需通过Rosetta 2转移）获得更好的书写体验。
 
 ## 使用
-参考下方黄正华老师的原始README文档，MasterTemplate-BACK.pdf为原始模版的输出结果，NJTECHMasterThesis-BACK.pdf为本人修改后的输出结果。成功编译得到与NJTECHMasterThesis-BACK.pdf即成果。
+参考下方黄正华老师的原始README文档，MasterTemplate-BACK.pdf为原始模版的输出结果，NJTECHMasterThesis-BACK.pdf为本人修改后的输出结果。成功编译得到与NJTECHMasterThesis-BACK.pdf相同的MasterTemplate.pdf即成功。
 
 以下为原始README文档：
 

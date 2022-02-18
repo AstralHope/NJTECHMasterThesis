@@ -1,0 +1,120 @@
+% !Mode:: "TeX:UTF-8"
+
+%%% 此部分包含: (1) 英文封面 (无需改动) ; (2) 郑重声明 (无需改动) ; (3)项目资助（需要自己填写） .
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% -------------  英文封面 (无需改动)-------------   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\renewcommand{\baselinestretch}{1.5}  %下文的行距
+\vspace*{0.5cm}
+\setmainfont{Times New Roman}
+
+\begin{center}{\zihao{3} \textbf{\MakeUppercase{\the\Etitle}} \par}\end{center}
+
+\vspace*{25mm} %插入空白
+%\vfill
+
+\begin{center}
+\zihao{3}
+A Thesis Submitted to\\
+Nanjing Tech University\\
+For the Professional Degree of Master of\\
+Engineering\\
+
+\vspace*{20mm} %插入空白
+
+By\\
+{\sc \the\Eauthor}      \\
+
+\vspace*{20mm} %插入空白
+
+Supervised by\\
+{\sc \the\Esupervisor}\\
+
+
+\vspace*{25mm} %插入空白
+
+\the\Edate
+
+\end{center}
+%%%%%%%--判断是否需要空白页-----------------------------
+  \iflib
+  \else
+  \newpage
+  \thispagestyle{empty}
+  \cleardoublepage
+  \fi
+  
+  
+%%%%%%%-------------------------------------------------
+%%%--- 加入``郑重声明'' --- %%%%%%%%%%%%%%%%%
+{
+	\pagestyle{empty}
+	\newpage
+	\setlength{\parindent}{0pt} %
+	\vspace*{20pt}
+	\begin{center}{\zihao{-2}\songti \textbf{学位论文独创性声明}}\end{center}
+	\par\vspace*{30pt}
+	\renewcommand{\baselinestretch}{2}
+	{\zihao{-4} \songti %
+		
+		
+		本人声明所呈交的学位论文是我个人在导师指导下进行的研究工作及取得的研究成果。尽我所知，除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表或撰写过的研究成果，也不包含为获得南京工业大学或其它教育机构的学位或证书而使用过的材料。与我一同工作的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示了谢意。 
+		
+		\begin{tabular}{lp{3cm}p{0cm}lp{3cm}l}
+			\raisebox{-0.5ex}[0pt]{\makebox[2.5cm][s]{研\hfill 究\hfill \hfill 生\hfill 签\hfill 名：}} & {}\hfill\raisebox{-0.5ex}[0pt]{}\hfill{} &  &
+			\raisebox{-0.5ex}[0pt]{\makebox[2.5cm][s]{日\hfill 期：}} & {}\hfill\raisebox{-0.5ex}[0pt]{}\hfill{} & \\\cline{2-2}\cline{5-5}
+		\end{tabular}
+		
+		
+		\vskip2cm
+		\par
+	}
+	
+	\begin{center}{\zihao{-2}\songti \textbf{学位论文的使用声明}}\end{center}
+	\par\vspace*{30pt}
+	\renewcommand{\baselinestretch}{2}
+	{\zihao{-4} \songti %
+		
+		
+		$ \square  $  1、南京工业大学、国家图书馆、中国科学技术信息研究所、万方数据电子出版社、中国学术期刊（光盘版）电子杂志社有权保留本人所送交学位论文的复印件和电子文档，可以采用影印、缩印或其他复制手段保存论文并通过网络向社会提供信息服务。论文的公布（包括刊登）授权南京工业大学研究生部办理。（打钩生效）\\
+		$ \square  $  2、本论文已经通过保密申请，请保留三年后按照第一项公开（打钩生效）\\
+		$ \square  $  3、本论文已经通过校军工保密申请，不予公开（打钩生效）
+		
+		
+		\begin{tabular}{lp{3cm}p{0cm}lp{3cm}l}
+			\raisebox{-0.5ex}[0pt]{\makebox[2.5cm][s]{研\hfill 究\hfill \hfill 生\hfill 签\hfill 名：}} & {}\hfill\raisebox{-0.5ex}[0pt]{}\hfill{} &  &
+			\raisebox{-0.5ex}[0pt]{\makebox[2.5cm][s]{导\hfill 师\hfill 签\hfill 名\hfill ：}} & {}\hfill\raisebox{-0.5ex}[0pt]{}\hfill{} & \\\cline{2-2}\cline{5-5}
+			\raisebox{-0.5ex}[0pt]{\makebox[2.5cm][s]{日\hfill 期：}} & {}\hfill\raisebox{-0.5ex}[0pt]{}\hfill{} &  &
+			\raisebox{-0.5ex}[0pt]{\makebox[2.5cm][s]{日\hfill 期：}} & {}\hfill\raisebox{-0.5ex}[0pt]{}\hfill{} & \\\cline{2-2}\cline{5-5}
+		\end{tabular}
+	
+	%%%%%%%-------------------------------------------------
+	%%%--- 加入``项目资助'' --- %%%%%%%%%%%%%%%%%
+		\clearpage
+		\vspace*{20pt}
+		\vfill
+		本文工作得到以下项目资助：
+		\begin{enumerate}[1. ]
+			\item 国家自然科学基金项目“链路相关无线网络中基于网络编码的数据分发机制研究”(项目编号：61502230)；
+			\item 江苏省自然科学基金项目“面向无线数据分发应用的新型网络编码机制研究”(项目编号：BK20150960)；
+		\end{enumerate}
+		
+	
+	
+	%%%%%%%--判断是否需要空白页-----------------------------
+	\iflib
+	\else
+	\newpage
+	\cleardoublepage
+	\fi
+	%%%%%%%-------------------------------------------------
+}
+
+\renewcommand{\baselinestretch}{1.6}
+\small\normalsize
+
+
+
+

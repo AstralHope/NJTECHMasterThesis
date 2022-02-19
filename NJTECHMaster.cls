@@ -90,7 +90,7 @@
     \vspace{1cm}
     \\[3mm]   \ifsmd  \heiti \zihao{1} 专业学位硕士论文\else \heiti \zihao{1} 硕士学位论文\fi}\\
     \vspace{1cm}
-    \reversemarginpar \marginpar[\hfill \parbox{1em}{ \kaishu \zihao{-4}  \centerline
+    \reversemarginpar \marginpar[\hfill \parbox{1em}{ \kaishu \zihao{-4}
     	 \ifentitle
     	 \the\sidetitle
     	\else

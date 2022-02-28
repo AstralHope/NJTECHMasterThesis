@@ -174,6 +174,7 @@
 \RequirePackage{txfonts}
 \RequirePackage{bm}%times new roman字体包
 \RequirePackage{titletoc}
+%\RequirePackage{indentfirst}
 
 %%----------------------- Theorems -----------------------------------
 \theoremstyle{plain}
@@ -303,6 +304,12 @@
 \setcounter{tocdepth}{4}
 \setcounter{secnumdepth}{4}
 \RequirePackage[font=small,textfont=it]{caption}
+\captionsetup[table]{labelsep=space}
+\captionsetup[figure]{labelsep=space}
+\renewcommand{\thetable}{\thechapter-\arabic{table}} % set caption label style to 1-1
+\renewcommand{\thefigure}{\thechapter-\arabic{figure}} % set caption label style to 1-1
+\setlength{\abovecaptionskip}{0cm} 
+\setlength{\belowcaptionskip}{0cm}
 
 
 

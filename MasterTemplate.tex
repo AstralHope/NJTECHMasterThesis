@@ -339,18 +339,33 @@ x = 1.
 
 如图 \ref{fig:1} 是一个纳入~jpg 图片的例子.
 
-\begin{figure}[ht]
+\begin{figure}[h]
 \centering
-  \includegraphics[width=\textwidth]{Daisy.jpg}
+  \includegraphics[width=12cm]{Daisy.jpg}
   \caption{一个彩色 jpg 图片的例子}
+  %英文标题begin
+  \addtocounter{figure}{-1}
+  \vspace{-5pt}
+  %\SetEnglishCaption
+  \renewcommand{\figurename}{Figure}
+  \caption{An example of a color jpg image}
+  \renewcommand{\figurename}{图}
   \label{fig:1}
 \end{figure}
 
 表格问题, 建议使用``三线表'', 如表 \ref{tab:1}.
 
-\begin{table}[ht]
+\begin{table}[h]
 \centering
 \caption{一般三线表}
+%英文标题begin
+\addtocounter{table}{-1}
+\vspace{-5pt}
+%\SetEnglishCaption
+\renewcommand{\tablename}{Table}
+\caption{Three row table}
+\renewcommand{\tablename}{表}
+%英文标题end
 \label{tab:1}
     \begin{tabular}{c c c c c c c c c c c}
     \hline

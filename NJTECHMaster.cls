@@ -1,6 +1,6 @@
 % !Mode:: "TeX:UTF-8"
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{WHUMaster}[2016/04/15 4.1 Wuhan University Thesis Template for Master Candidate]
+\ProvidesClass{NJTECHMaster}[2016/04/15 4.1 Wuhan University Thesis Template for Master Candidate]
 
 \newif\iflib\libfalse
 \DeclareOption{forlib}{\libtrue}
@@ -12,10 +12,13 @@
 \DeclareOption{entitle}{\entitletrue}
 \ProcessOptions
 
+%% 引用ctexbook: 小4,1.5倍行距
+%\LoadClass[UTF8,zihao=-4,linespread=1.7]{ctexbook}%1.5+0.2行间距
+
  \iflib
- \LoadClass[a4paper,twoside,openany]{ctexbook}
+ \LoadClass[UTF8,zihao=-4,linespread=1.7,a4paper,twoside,openany]{ctexbook}
  \else
- \LoadClass[a4paper,twoside]{ctexbook}
+ \LoadClass[UTF8,zihao=-4,linespread=1.7,a4paper,twoside]{ctexbook}
  \fi
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
@@ -24,7 +27,7 @@
 \RequirePackage{fancyhdr,hyperref}
 \hypersetup{pdfencoding=auto}  %%% 邓东升修改
 \hypersetup{citecolor=magenta,linkcolor=blue}
-\RequirePackage[top=2.54truecm,bottom=2.54truecm,left=3.17truecm,right=3.17truecm,
+\RequirePackage[top=2.54truecm,bottom=2.54truecm,left=3.18truecm,right=3.18truecm,
             %includehead,%includefoot,
            xetex]{geometry}    % 页面设置%
 
@@ -36,7 +39,7 @@
 \newtoks\Cspeciality      %二级学科名称（专硕为工程硕士）
 \newtoks\Edate           %英文日期
 \newtoks\Etitle          %英文题目
-\newtoks\sidetitle         %侧边标题栏
+\newtoks\spine         %侧边书脊栏
 \newtoks\Eauthor         %作者英文名
 \newtoks\Esupervisor     %指导教师英文名
 \newtoks\Csupervisor     %指导教师中文名
@@ -48,22 +51,28 @@
 \let\ps@oldplain\ps@plain
 
 \fancyhf{}  %清除以前对页眉页脚的设置
-\fancyhead[CE]{\leftmark}   %偶数页页眉居中位置的设置. 不填则为空.
-\fancyhead[CO]{硕士学位论文}    %L,C,R 是左中右; O,E 是奇偶. 可以自己组合调整.
+\fancyhead[CE]{\zihao{5}\kaishu \leftmark}   %偶数页页眉居中位置的设置. 不填则为空.
+\fancyhead[CO]{\zihao{5}\kaishu 硕士学位论文}    %L,C,R 是左中右; O,E 是奇偶. 可以自己组合调整.
  \fancyfoot[C]{-\,\thepage\,-}                     %页面下侧的设置. 大括号内置空, 表示什么也不填. 反之, 没有此命令的话, 会在页脚出现页码
  
- \fancypagestyle{onlytitle}{
+ \fancypagestyle{onlytitle}{%可弃用
 \fancyhf{}  %清除以前对页眉页脚的设置
-\fancyhead[CE]{\leftmark}   %偶数页页眉居中位置的设置. 不填则为空.
-\fancyhead[CO]{\leftmark}    %L,C,R 是左中右; O,E 是奇偶. 可以自己组合调整.
+\fancyhead[CE]{\zihao{5}\kaishu \leftmark}   %偶数页页眉居中位置的设置. 不填则为空.
+\fancyhead[CO]{\zihao{5}\kaishu \leftmark}    %L,C,R 是左中右; O,E 是奇偶. 可以自己组合调整.
 \fancyfoot[C]{-\,\thepage\,-}                     %页面下侧的设置. 大括号内置空, 表示什么也不填. 反之, 没有此命令的话, 会在页脚出现页码
  }
- 
+
+ \fancypagestyle{toc}{%目录的页眉单独处理以解决sb学校目录字号和其他一级标题不一致的问题
+	\fancyhf{}  %清除以前对页眉页脚的设置
+	\fancyhead[CE]{\zihao{5}\kaishu 目{\quad}录}   %偶数页页眉居中位置的设置. 不填则为空.
+	\fancyhead[CO]{\zihao{5}\kaishu 硕士学位论文}    %L,C,R 是左中右; O,E 是奇偶. 可以自己组合调整.
+	\fancyfoot[C]{-\,\thepage\,-}                     %页面下侧的设置. 大括号内置空, 表示什么也不填. 反之, 没有此命令的话, 会在页脚出现页码
+}
  
  \newcommand{\fancyfancy}{\fancypagestyle{plain}{%
   \fancyhf{}
-   \fancyhead[CE]{\leftmark }  %偶数页页眉居中位置的设置. 不填则为空.
- \fancyhead[CO]{硕士学位论文}    %L,C,R 是左中右; O,E 是奇偶. 可以自己组合调整.
+   \fancyhead[CE]{\zihao{5}\kaishu \leftmark }  %偶数页页眉居中位置的设置. 不填则为空.
+ \fancyhead[CO]{\zihao{5}\kaishu 硕士学位论文}    %L,C,R 是左中右; O,E 是奇偶. 可以自己组合调整.
  \fancyfoot[C]{-\,\thepage\,-} }} 
 
 
@@ -72,7 +81,7 @@
 \def\maketitle{%
   \null
   \thispagestyle{empty}%
-  %\vspace*{-2cm}
+  \vspace*{-2cm}
   \begin{center}\leavevmode
     {\songti \zihao{5}%
     \begin{tabular}{lp{3cm}p{5cm}lp{3cm}l}
@@ -85,21 +94,23 @@
     \par
     \vspace*{15mm} %插入空白
     {\songti \zihao{2} % 学校logo
-    \includegraphics[width=0.6\textwidth]{njtech.jpg}
-    %\marginpar[\hfill \parbox{1em}{ \kaishu \zihao{-4} \the\sidetitle}]{} \reversemarginpar
+    \includegraphics[width=0.6\textwidth]{NJTech-Text-BW.eps}
+   %****大学
+    %\marginpar[\hfill \parbox{1em}{ \kaishu \zihao{-4} \the\spine}]{} \reversemarginpar
     \vspace{1cm}
     \\[3mm]   \ifsmd  \heiti \zihao{1} 专业学位硕士论文\else \heiti \zihao{1} 硕士学位论文\fi}\\
     \vspace{1cm}
-    \reversemarginpar \marginpar[\hfill \parbox{1em}{ \kaishu \zihao{-4}
-    	 \ifentitle
-    	 \the\sidetitle
+    {\heiti \zihao{-2}  \@title \par}\reversemarginpar \marginpar[\hfill \parbox{1em}{ \kaishu \zihao{-4}
+    	\ifentitle
+    	\the\spine
     	\else
     	\@title
     	\fi
-    	 }]{}{\heiti \zihao{-2}  \@title \par}%
-%    \vspace{4cm}
-     \vfill\vfill\vfill
+    }]{}
+    %\vspace{1cm}
+     \vfill
      \marginpar[\hfill \parbox{1em}{\kaishu \zihao{-4} 南京工业大学}]{}
+     %\marginpar[\hfill \parbox{1em}{\kaishu *\quad*\quad*\quad*大学\zihao{-4}}]{}
     {\heiti\zihao{4}
     \ifsmd 
     \begin{tabular}{cp{3cm}c}
@@ -130,7 +141,7 @@
     }
   \end{center}%
   \null
-\newgeometry{top=2.54truecm,bottom=2.54truecm,left=3.17truecm,right=3.17truecm,xetex}%单独设置页边距保证边注位置
+\newgeometry{top=2.54truecm,bottom=2.54truecm,left=3.18truecm,right=3.18truecm,xetex}%正文页边距
   \iflib
   \else
   \newpage
@@ -141,24 +152,24 @@
 
 
 %------------------------ Abstract & Keywords -------------------------
-\newcommand\cnabstractname{摘要}
+\newcommand\cnabstractname{摘{\quad}要}
 \newcommand\enabstractname{ABSTRACT}
-\newcommand\cnkeywords[1]{ {\heiti\zihao{-4}\cnkeywordsname: }#1}
+\newcommand\cnkeywords[1]{ {\noindent \textbf{\songti\zihao{5} \cnkeywordsname \qquad}}#1}
 \newcommand\cnkeywordsname{关键词}
-\newcommand\enkeywords[1]{ {\bfseries\zihao{-4}\enkeywordsname: }#1}
-\newcommand\enkeywordsname{Key words}
+\newcommand\enkeywords[1]{ {\noindent \bfseries\zihao{-4}\enkeywordsname{\quad}}#1}
+\newcommand\enkeywordsname{KEYWORDS}
 
 \newenvironment{cnabstract}{
     \newpage
     
-    \chapter[\cnabstractname]{\ziju{2}{\cnabstractname}}   %%%终于解决了书签乱码的问题 2005-04-12.huangzh
+    \chapter[\cnabstractname]{\songti\zihao{-3}{\cnabstractname}}   %%%终于解决了书签乱码的问题 2005-04-12.huangzh
     \songti\zihao{-4}
     \@afterheading}
     {\par}
 
 \newenvironment{enabstract}{
     \newpage
-    \chapter{\enabstractname}
+    \chapter[\enabstractname]{\zihao{4}{\enabstractname}}
     \songti\zihao{-4}
     \@afterheading}
     {\par}
@@ -174,7 +185,20 @@
 \RequirePackage{txfonts}
 \RequirePackage{bm}%times new roman字体包
 \RequirePackage{titletoc}
+\RequirePackage{algorithm}
+\RequirePackage{algorithmicx}
+\RequirePackage{algpseudocode}
+\RequirePackage{verbatim}
+\RequirePackage{multirow}
+\RequirePackage{subfigure}
+\RequirePackage{float}
+\RequirePackage{setspace}
+%\RequirePackage{ccmap}
+%\RequirePackage{amsmath}
+%\RequirePackage{gbt7714}
 %\RequirePackage{indentfirst}
+
+
 
 %%----------------------- Theorems -----------------------------------
 \theoremstyle{plain}
@@ -185,6 +209,7 @@
 %\theoremseparator{\hspace{1em}}
 \theoremnumbering{arabic}
 %\theoremsymbol{} %定理结束时自动添加的标志
+\renewcommand{\theequation}{\thechapter-\arabic{equation}} % set caption label style to 1-1
 \newtheorem{theorem}{\hspace{2em}定理}[section]
 \newtheorem{definition}{\hspace{2em}定义}[section]
 \newtheorem{lemma}{\hspace{2em}引理}[section]
@@ -199,6 +224,12 @@
 \theoremindent0em \theoremseparator{\hspace{1em}}
 \theoremsymbol{$\square$}
 \newtheorem{proof}{\hspace{2em}证明}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\ALG@name}{算法}
+\counterwithin{algorithm}{chapter}
+\renewcommand{\thealgorithm}{\thechapter-\arabic{algorithm}}
+
 
 %%%---  Publications -------------------------------
 \newenvironment{publications}[1]
@@ -206,23 +237,60 @@
   {\end{thebibliography}}
 
 %%%--- \upcite ----------------------------------------
-\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}  %自定义新命令\upcite, 使参考文献引用以上标出现
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}  %自定义新命令\upcite, 使文献引用以上标出现
 
 
+%%%--- 允许算法跨页 ----------------------------------------
+% -------------------------允许算法跨页-------------
+\makeatletter
+\newenvironment{breakablealgorithm}
+{% \begin{breakablealgorithm}
+		\vspace*{5mm} %插入空白
+		\begin{center}
+			\refstepcounter{algorithm}% New algorithm
+			\hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+			\renewcommand{\caption}[2][\relax]{% Make a new \caption
+				{\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+				\ifx\relax##1\relax % #1 is \relax
+				\addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+				\else % #1 is not \relax
+				\addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+				\fi
+				\kern2pt\hrule\kern2pt
+			}
+		}{% \end{breakablealgorithm}
+		\kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+	\end{center}
+\vspace*{8mm} %插入空白
+}
+\makeatother
 
-\titlecontents{chapter}
-[5em]
-{\heiti \zihao{4} }{\contentslabel{4em}}{\hspace*{-4em}}{~\titlerule*[0.6pc]{$.$}~\contentspage}
+
+%目录格式设置
+%\chapter[\cnabstractname]{\zihao{-3}{\cnabstractname}
+\titlecontents{chapter}[5em]{\heiti \zihao{4}}{\contentslabel{4em}}{\hspace*{-4em}}{~\titlerule*[0.6pc]{$.$}~\contentspage}
+
+\titlecontents{section}[3.5em]{\songti \zihao{4}}{\contentslabel{2em}}{\hspace*{-4em}}{~\titlerule*[0.6pc]{$.$}~\contentspage}
+
+\titlecontents{subsection}[5.2em]{\songti \zihao{4}}{\contentslabel{2.5em}}{\hspace*{-4em}}{~\titlerule*[0.6pc]{$.$}~\contentspage}
 
 %%%%%%%--判断是否需要彩色链接-----------------------------
   \iflib
-  \hypersetup{allcolors=black}
+ % \hypersetup{allcolors=black}
+   \hypersetup{
+  	colorlinks=true,
+  	allcolors=black
+  }
   \else
   \fi
 %%%%%%%-------------------------------------------------
 %%%%%%%--判断是否需要彩色链接-----------------------------
   \ifprint
-  \hypersetup{allcolors=black}
+ % \hypersetup{allcolors=black}
+ \hypersetup{
+ 	colorlinks=true,
+ 	allcolors=black
+ }
   \else
   \fi
 %%%%%%%-------------------------------------------------
@@ -288,22 +356,23 @@
 
 \makeatother
 %---------------------------------------------------
-\renewcommand{\contentsname}{目\qquad 录}
+\renewcommand{\contentsname}{\zihao{-3}目\quad 录}
 \newcommand\acknowledgement{\backmatter\chapter[致谢]{\ziju{2}致谢}}
 \newcommand\project{\backmatter\chapter[攻读硕士学位期间参加的科研项目]{攻读硕士学位期间参加的科研项目}}
 \newcommand\achievement{\backmatter\chapter[攻读硕士学位期间完成的学术成果]{攻读硕士学位期间完成的学术成果}}
 \newcommand\awards{\backmatter\chapter[攻读硕士学位期间获得的奖项]{攻读硕士学位期间获得的奖项}}
  
 %%% ---- 章节标题设置 ----- %%%%
-\CTEXsetup[nameformat={\zihao{-2}\bfseries\raggedright\textbf},titleformat={\zihao{-2}\bfseries\centering},%
-                 number={\arabic{chapter}},name={第,章},afterskip={30pt},beforeskip={20pt}]{chapter}
-\CTEXsetup[format+={\zihao{3}\raggedright}]{section}
-\CTEXsetup[format+={\zihao{4}\raggedright}]{subsection}
-\CTEXsetup[format={\zihao{-4}\kaishu\raggedright}]{subsubsection}
-\CTEXoptions[bibname={\large 参考文献}]
-\setcounter{tocdepth}{4}
+\CTEXsetup[nameformat={\songti\zihao{3}\bfseries\raggedright\textbf},titleformat={\songti\zihao{3}\bfseries\centering},%
+                 number={\arabic{chapter}},name={第,章},beforeskip={-5ex},afterskip={1.0ex}]{chapter}
+\CTEXsetup[format+={\songti\zihao{4}\raggedright},beforeskip={1.0ex},afterskip={1.0ex}]{section}
+\CTEXsetup[format={},nameformat={\songti\zihao{-4}\songti\raggedright},titleformat={\zihao{-4}\songti\raggedright},beforeskip={1.0ex},afterskip={1.0ex}]{subsection}
+%\CTEXsetup[format+={\zihao{-4}\songti\raggedright}]{subsection}
+\CTEXsetup[format={\songti\zihao{-4}\kaishu\raggedright}]{subsubsection}
+\CTEXoptions[bibname={参考文献}]
+\setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{4}
-\RequirePackage[font=small,textfont=it]{caption}
+\RequirePackage[font=small,textfont=rm]{caption}
 \captionsetup[table]{labelsep=space}
 \captionsetup[figure]{labelsep=space}
 \renewcommand{\thetable}{\thechapter-\arabic{table}} % set caption label style to 1-1
@@ -311,7 +380,21 @@
 \setlength{\abovecaptionskip}{0cm} 
 \setlength{\belowcaptionskip}{0cm}
 
+\setlength\abovedisplayskip{100pt}
+\setlength\belowdisplayskip{100pt}
 
+\makeatletter
+\def\cleardoublepage{\clearpage
+	\if@twoside % 双面打印
+	\ifodd\c@page % 不存在 \ifeven 命令；\c@page 是页码
+	\else
+	\hbox{}\thispagestyle{empty}\newpage % 此行是唯一改动的地方
+	\if@twocolumn % 两列
+	\hbox{}\newpage
+	\fi
+	\fi
+	\fi}
+\makeatother
 
 %%%=== 图片路径=== %%%
 \graphicspath{{figures/}}        % 图片放在 figures 文件夹.

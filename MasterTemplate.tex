@@ -1,332 +1,317 @@
 %!TEX program = xelatex
 % !Mode:: "TeX:UTF-8"
 %% 请使用 XeLaTeX 编译本文.
-\documentclass[smd,forlib,entitle]{NJTECHMaster}   % 选项 forprint: 交付打印时, 建议加上此选项, 以消除彩色链接文字, 避免彩色字迹打印偏淡.
-                                              % 选项 forlib: 提交给图书馆的电子版, 需要加上选项 forlib, 以消除空白页和彩色链接.
-                                              % 选项 smd: Specialist Master's Degree, 产生专业硕士学位论文封面、页眉.
-                                              % 选项 entitle: 使下文的\sidetitle选项生效，尽量不要在中文标题中带英文，对齐还有点小问题.
+\documentclass[smd,entitle,forlib,AutoFakeBold]{NJTECHMaster}   
+% 选项 smd: Specialist Master's Degree, 产生专业硕士学位论文封面、页眉.
+% 选项 forprint: 交付打印时, 建议加上此选项，会自动增加空白页保证每个章节为奇数页， 消除彩色链接文字, 避免彩色字迹打印偏淡.
+% 选项 forlib: 提交给图书馆的电子版（盲审也交这个版本）, 需要加上选项 forlib, 以消除空白页和彩色链接.
+% 选项 entitle: 使下文的\spine选项生效，尽量不要在中文标题中带英文，对齐还有点小问题.
+% 选项AutoFakeBold：避免在Windows下加粗的宋体变成黑体，Mac下可不加该选项
 %%%=== 参考文献=== %%%
-\bibliographystyle{abbrv}        % 参考文献样式,  plain,unsrt,alpha,abbrv 等等
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{gbt7714}        % 外挂的满足gbt7714的参考文献样式
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
-%%%%%%%-------------------------------------------------
-
-\fenleihao{}  % 分类号:《中国图书资料分类法》的类号. 必填. 要根据自己的学科方向填写!!
-\miji{}                % 密级
-\UDC{}               %《国际十进制分类法UDC》的类号. 选填.
-\bianhao{}  % 学校编号, 10291是南京工业大学的编号
-
-
-\title{南京工业大学硕士论文~\LaTeX~模板}
-\sidetitle{南京工业大学硕士论文L  A T E X 模板}%边栏的标题，手动将英文字母空格分开,不启用entitle选项时可忽略
-\Etitle{A \LaTeX~Thesis Template for NanjingTech University} % 英文题目
-\author{郭索眸}
-\Eauthor{Suomou Guo}            %作者英文名
-\Csupervisor{赵志宏\quad 教授}        %指导教师中文名、职称
-\Esupervisor{Prof.~ZHAO Zhi Hong}     %指导教师英文名、职称
-\Cmajor{计算机技术}                          % 一级专业中文名[ SMD:领域名称]
-\Cspeciality{工程硕士}                     % 二级学科名称[ SMD:工程硕士]
-
-\date{2022年4月}                    % 硕士类只写年月. 要注意和英文日期一致!!
-\Edate{April, 2022}                   % 英文封面日期
-
-%-----------------------------------------------------------------------------
-\pdfbookmark[0]{封面}{title}         % 封面页加到 pdf 书签
-\maketitle
-%-----------------------------------------------------------------------------
-\include{includefile/frontmatter}    % 加入英文封面
-\frontmatter
-\pagenumbering{Roman}               % 正文之前的页码用大写罗马字母编号.
-
-\cleardoublepage
-\newpage  
-\pagestyle{fancy} \fancyfancy
-%------------------------------------------------------------------------------
-\include{includefile/midmatter}      % 加入中英文摘要.
-%---把目录加入到书签---%%%%%%%%%%%%%%
-\pdfbookmark[0]{目录}{toc}%%%%%%%%%%%%
-\tableofcontents
-\thispagestyle{onlytitle}
-\addcontentsline{toc}{chapter}{目\texorpdfstring{\quad}{} 录}
-%------------------------------------------------------------------------------
-\mainmatter %% 重新计算页码，以下是正文
-\baselineskip=20pt  % 正文行距为 20 磅
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{先说重要的}
-
+	%%%%%%%-------------------------------------------------
+	\fenleihao{}  % 分类号:《中国图书资料分类法》的类号
+	\miji{}                % 密级
+	\UDC{}               %《国际十进制分类法UDC》的类号
+	\bianhao{}  % 学校编号, 10291是南京工业大学的编号
+	
+	\title{南京工业大学硕士论文~\LaTeX~模板}
+	\spine{南京工业大学硕士论文 ~ \rotatebox[origin=c]{-90}{~\LaTeX{}~} 模板}%边栏的书脊，手动将英文字母填在rotatebox里,不启用entitle选项时可忽略
+	\Etitle{A \LaTeX~Thesis Template for NanjingTech University} % 英文题目
+	\author{郭索眸}%作者姓名
+	\Eauthor{Suomou Guo}            %作者英文名
+	\Csupervisor{白光伟\quad 顾慎凯}        %指导教师中文名，单导师时使用可使用“赵志宏\quad 教授”
+	\Esupervisor{Prof.~Guangwei Bai \\and\\Lecturer.~Shenkai Gu}     %指导教师英文名、职称，单导师时使用"Prof.~Zhihong Zhao"
+	\Cmajor{计算机技术}                          % 一级专业中文名[ SMD:领域名称]
+	\Cspeciality{工程硕士}                     % 二级学科名称[ SMD:工程硕士]
+	
+	\date{2022年4月}                    % 硕士类只写年月. 要注意和英文日期一致!!
+	\Edate{April 2022}                   % 英文封面日期
+	
+	%-----------------------------------------------------------------------------
+	%\pdfbookmark[0]{封面}{title}         % 封面页加到 pdf 书签
+	\maketitle
+	%-----------------------------------------------------------------------------
+	\include{includefile/frontmatter}    % 加入英文封面、独创性声明、使用声明、项目资助情况
+	\frontmatter
+	\pagenumbering{Roman}               % 正文之前的页码用大写罗马字母编号.
+	
+	\cleardoublepage
+	\newpage  
+	\pagestyle{fancy} \fancyfancy
+	%------------------------------------------------------------------------------
+	\renewcommand{\baselinestretch}{1.7} \normalsize %行距
+	\include{includefile/midmatter}      % 加入中英文摘要.
+	%---把目录加入到书签---%%%%%%%%%%%%%%
+	%\pdfbookmark[0]{目录}{toc}%%%%%%%%%%%%
+	\tableofcontents
+	\thispagestyle{toc}
+	\addcontentsline{toc}{chapter}{目\texorpdfstring{\quad}{} 录}
+	%------------------------------------------------------------------------------
+	\mainmatter %% 重新计算页码，以下是正文
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\renewcommand{\arraystretch}{1.5}%表格行间距
+	
+\chapter{绪论}
 \section{具体使用步骤}
+
 \begin{description}
-
-  \item[Step 1]  进入 includefile 文件夹\@title,  打开 midmatter.tex,  backmatter.tex 这两个文档,
-        分别填写 (1) 中文摘要、英文摘要, (2) 致谢.
-
-  \item[Step 2]  打开主文档 MasterTemplate.tex, 填写题目、作者等等信息, 书写正文.
-
-  \item[Step 3]  使用 XeLaTeX 编译. 具体见 \ref{sec-compile} 节.
-
-
+	
+	\item[Step 1]  进入 includefile 文件夹,  打开frontmatter.tex,  midmatter.tex,  backmatter.tex 这三个文档,
+	分别填写 (1) 项目资助，(2)中文摘要、英文摘要, (3) 科研项目、学术成果、奖项、致谢。
+	
+	\item[Step 2]  打开主文档 MasterTemplate.tex, 填写题目、作者等等信息, 书写正文。
+	
+	\item[Step 3]  使用 XeLaTeX 编译. 具体见 \ref{sec-compile} 节。
+	
+	
 \end{description}
-
-
-
 
 \section{编译的方法}\label{sec-compile}
 
-默认使用 XeLaTeX 编译, 直接生成~pdf 文件.
+默认使用 XeLaTeX 编译, 直接生成~pdf 文件。
 
-
-
-若另存为新文档, 请确保文档保存类型为 \verb|:UTF-8|. 当然目前很多编辑器默认文字编码为 UTF-8.
-WinEdt 9.0 之后的版本都是默认保存为 UTF-8 的.
-
-
+若另存为新文档, 请确保文档保存类型为 \verb|:UTF-8|。当然目前很多编辑器默认文字编码为 UTF-8。
+WinEdt 9.0 之后的版本都是默认保存为 UTF-8 的。
 
 \section{文档类型选择}
-文档类型有 3 种情形:
+文档类型包括一下几类选项：
 
-\begin{table}[ht]\centering
-\begin{tabular}{ll}
-\hline
-   \verb|\documentclass{WHUMaster}|                 &  硕士论文 \\
-   \verb|\documentclass[forprint]{WHUMaster}|    &  硕士论文打印版  \\
-   \verb|\documentclass[forlib]{WHUMaster}|       &  硕士论文图书馆提交版  \\
-\hline
-\end{tabular}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[h]
+	\centering
+	\caption{文档类型选项}
+	%英文标题begin
+	\addtocounter{table}{-1}
+	%\SetEnglishCaption
+	\renewcommand{\tablename}{Table}
+	\caption{Document type options}
+	\renewcommand{\tablename}{表}
+	%英文标题end
+	\label{tbl-DTO}
+	\vspace{2pt}
+	\small
+	\begin{tabular}{l|l|l}
+		\hline
+		\multicolumn{1}{c|}{选项组}                   & 选项           & 含义                                                                                                                                                                                                                                                                                      \\ \hline
+		\multicolumn{1}{c|}{\multirow{2}{*}{论文类型}} & 留空           & 学术学位                                                                                                                                                                                                                                                                                    \\ \cline{2-3} 
+		\multicolumn{1}{c|}{}                      & smd          & 专业学位                                                                                                                                                                                                                                                                                    \\ \hline
+		\multirow{3}{*}{输出类型}                       & 留空           & 链接会加彩色框便于确认，会自动增加空白页保证每个章节为奇数页                                                                                                                                                                                                                                                          \\ \cline{2-3} 
+		& forprint     & 消除彩色链接，自动增加空白页保证每个章节为奇数页                                                                                                                                                                                                                                                    \\ \cline{2-3} 
+		& forlib     & 消除了空白页和彩色链接，提交给图书馆（以及盲审）时使用这个版本                                                                                                                                                                                                                                                         \\ \hline
+		英文标题                                        & entitle      & 使~\verb|\spine{}|~生效，非中文字符内容填写在~\verb|\rotatebox[origin=c]{-90}{}|~中 \\ \hline
+		字体修正                                        & AutoFakeBold & 避免在Windows下加粗的宋体变成黑体，Mac下可不加该选项                                                                                                                                                                                                                                                         \\ \hline
+	\end{tabular}
 \end{table}
 
-另外: 专业硕士毕业论文, 请在上述情形另外加上选项 smd. 专业硕士毕业论文的封面稍有不同(中英文封面), 页眉也顺势改变了. 即
-\begin{table}[ht]\centering
-\begin{tabular}{ll}
-\hline
-   \verb|\documentclass[smd]{WHUMaster}|               &  专业硕士论文 \\
-   \verb|\documentclass[smd,forprint]{WHUMaster}|    &  专业硕士论文打印版  \\
-   \verb|\documentclass[smd,forlib]{WHUMaster}|       &  专业硕士论文图书馆提交版  \\
-\hline
-\end{tabular}
-\end{table}
+例如，学术硕士论文，中文标题中含义英文字符，在Mac上输出打印版本：\\ \verb|\documentclass[forprint]{NJTECHMaster}|
 
-
-
+专业硕士论文，纯中文标题，在Windows上输出图书馆提交版本：\\	\verb|\documentclass[smd,forlib,AutoFakeBold]{NJTECHMaster} | 
+ 
 相关解释见接下来的两节.
-
-
 
 \section{打印的问题}
 \begin{enumerate}[i)]
-  \item  硕士论文要求\colorbox{yellow}{双面打印}.
-  \item  关于文档选项 forprint: 交付打印时, 建议加上选项 forprint, 以消除彩色链接文字, 避免打印字迹偏淡.
-  \item  打印时留意不要缩小页面或居中. 即页面放缩方式应该是``无''(Adobe Reader XI 是选择``实际大小'').
-           有可能页面放缩方式默认为``适合可打印区域'', 会导致打印为原页面大小的 $97\%$.
-  \item  $ \beta $版本采用的上一届留下的word版本设置的页边距，实际如有变动前往cls文件搜索\textbf{Page layout}进行修改.
+	\item  硕士论文要求\colorbox{yellow}{双面打印}.
+	\item  关于文档选项 forprint: 交付打印时, 建议加上选项 forprint, 以消除彩色链接文字, 避免打印字迹偏淡。同时该选项已经添加好了空白页（该页显示效果为完全空白但计算了页码）使得每章在奇数页起始（即装订后翻开在右手边那页）。
+	\item  打印时留意不要缩小页面或居中. 即页面放缩方式应该是``无''或者``100\%'' (Adobe Reader XI 是选择``实际大小'')。
+	有可能页面放缩方式默认为``适合可打印区域'', 会导致打印为原页面大小的 $97\%$。
 \end{enumerate}
-
-\textbf{问}: {\kaishu 生成 PDF 文件时，不能去掉目录和文章的引用彩色方框，请问怎么解决？}
-
-\textbf{答}: {\kaishu 方框表示超级链接, 只在电脑上看得见. 实际打印时, 是没有的.}
-
-
-
-
 
 \section{提交电子文档}
 
-电子文档版本在文档选项中添加 forlib单独编译（去掉类空白页和彩色文字）.
+向图书馆提交电子文档（和提交盲审版时）, 需单独编译文件: 在文档选项中添加 forlib。
+
+原因: 图书馆要求提交的电子文档和盲审版不能有空白页、彩色文字。同时，在提交盲审版本时，还需要在~NJTECHMaster.cls中删除工业大学的logo，去除书脊中的南京工业大学字样。
 
 ({\kaishu 这个要求使我在编制模板时遇到了一点问题: 这会导致电子版与纸质版的页码不一致.  论文每章的起始页默认在奇数页, 这会不可避免地出现空白页.})
 
+\section{其他说明}
 
-本文档下载更新地址: \url{http://aff.whu.edu.cn/huangzh/}. 使用之前, 请移步查看是否有更新.
+本文档下载更新地址: \url{https://github.com/AstralHope/NJTECHMasterThesis}. 使用之前, 请移步查看是否有更新.
 
-问题反馈及建议, 请联系: huangzh@whu.edu.cn.
+问题反馈及建议, 请在\href{https://github.com/AstralHope/NJTECHMasterThesis/issues}{issues}中提出。
 
+有待完善的地方：
 
+\begin{description}
+	
+	\item[$ \square  $]  提供盲审选项，自动隐藏封面上的个人与学校信息。
+	
+	\item[$ \square  $]  提供forwrite选项，去除空白页但保留彩色链接，便于修改。
+	
+	\item[$ \square  $]  macOS下复制黑体会乱码。
+	
+\end{description}
 
+\chapter{各种格式的设置}
 
-\chapter{杂七杂八的话}
-
-\section{Readme}
-
-模板文件的结构, 如下表所示:
- \begin{table}[ht]\centering
-\begin{tabular}{r|r|l}
-\hline\hline
-  \multicolumn{2}{l|}{MasterTemplate.tex }  &  主文档. 在其中填写正文.\\\hline
-                          &frontmatter.tex&  英文封面. \hfill ({\kaishu 无需干预}) \\\cline{2-3}
- includefile 文件夹  & midmatter.tex  &  中文摘要, 英文摘要.\hfill  ({\kaishu 自行填写}) \\\cline{2-3}
-                            & backmatter.tex &  致谢.\hfill  ({\kaishu 自行填写}) \\\hline
-  \multicolumn{2}{l|}{figures 文件夹} &  存放图片文件.\\\hline
-  \multicolumn{2}{l|}{BIBbase 文件夹} &   供 BibTeX{} 做参考文献时选用.\\
-\hline
-  \multicolumn{2}{l|}{WHUMaster.cls} &  定义文档格式的 class file. 不可删除.\\ \hline \hline
-\end{tabular}
+\section{文件结构}
+\begin{table}[ht]\centering
+	\begin{tabular}{r|r|l}
+		\hline\hline
+		\multicolumn{2}{l|}{MasterTemplate.tex }  &  主文档，在其中填写正文\\\hline
+		&frontmatter.tex&  英文封面\hfill ({\kaishu 自行填写}) \\\cline{2-3}
+		includefile 文件夹  & midmatter.tex  &  中文摘要，英文摘要\hfill  ({\kaishu 自行填写}) \\\cline{2-3}
+		& backmatter.tex &  致谢\hfill  ({\kaishu 自行填写}) \\\hline
+		\multicolumn{2}{l|}{figures 文件夹} &  存放图片文件\\\hline
+		\multicolumn{2}{l|}{BIBbase 文件夹} &   供 BibTeX{} 做参考文献时选用\\
+		\hline
+		\multicolumn{2}{l|}{NJTECHMaster.cls} &  定义文档格式的 class file，不可删除\\ \hline \hline
+	\end{tabular}
 \end{table}
-%  \footnotetext[1]{定制这个参考文献格式, 主要是希望尽可能满足硕士论文的相应格式要求, 比如要求将~article 的``年份''写在``卷号''之前.
-%                   存在的问题是: 无法将~book 的``出版时间''标在``出版单位''之前. 事实上, 这个要求有悖于``国家标准~7714-87 文后参考文献著录规则''.
-%                   作者名的写法, 依照了``文后参考文献著录规则'', 比如~Albert Einstein 写为~Einstein A.}
-%  \footnotetext[1]{编译信息文件常常让我们的文件夹变得凌乱不堪, WinEdt窗口的``垃圾箱''按钮(Erase Output Files),
-%     可以让我们方便地删除这些``垃圾''文件. 这也减少了误删文件的可能.}
 
-无需也不要改变、移动上述文档的位置.
+无需也不要改变、移动上述文档的位置。
 
-
-
-可能这里的文档看上去有点多. 如果不习惯用~\verb|\include{ }|~的方式加入``子文档'', 当然可以把它们合并在主文档, 成为一个文档.
+可能这里的文档看上去有点多. 如果不习惯用~\verb|\include{ }|~的方式加入``子文档'', 当然可以把它们合并在主文档, 成为一个文档。
 ({\kaishu 但是这样并不会给我们带来方便.})
 
-利用~WinEdt~的~Project tree, 可以方便地管理这些文件（macOS下可使用免费的TeXstudio）:
+macOS下推荐使用\href{https://www.texstudio.org/}{TeXstudio}可以很方便的编译和管理。
+
+
+Windows下利用~WinEdt~的~Project tree, 可以方便地管理这些文件：
 \begin{itemize}
-    \item 点击~WinEdt~窗口的~Project Tree~按键;
-    \item 再点击~WinEdt~窗口的~Set Main File~按键;
+	\item 点击~WinEdt~窗口的~Project Tree~按键；
+	\item 再点击~WinEdt~窗口的~Set Main File~按键；
 \end{itemize}
-接下来的管理, 已经清楚地展示在跳出的窗口中了. 再去处理其他的文件时, 还要点击~WinEdt~窗口的~Remove Main File~按键.
-
-
-2022年02月15日更新：从源模版上针对南京工业大学的硕士论文要求作了修改
-
-2016 年 02 月更新: 调整为适应 TeX Live 2015 的版本.
-
-2016 年 04 月更新: 按照研究生院新发布的要求进行改造. 主要变化: (1) 封面``武汉大学''字样改为毛体题字;
-(2) 郑重声明改为论文原创性声明; (3) 加了页眉; (4) 专业硕士论文封面, 供选择. 使用选项 smd 即可.
+接下来的管理, 已经清楚地展示在跳出的窗口中了. 再去处理其他的文件时, 还要点击~WinEdt~窗口的~Remove Main File~按键。
 
 \section{字体调节}
 
 \begin{tabular}{ll}
- \verb|\songti| & {\songti 宋体} \\
- \verb|\heiti| & {\heiti 黑体} \\
- \verb|\fangsong| & {\fangsong 仿宋} \\
- \verb|\kaishu| & {\kaishu 楷书} \\
- \verb|\rm| & {\rm Time New Roman} \\
- \verb| \textbf{}| &  \textbf{加粗}\\
+	\verb|\songti| & {\songti 宋体} \\
+	\verb|\heiti| & {\heiti 黑体} \\
+	\verb|\fangsong| & {\fangsong 仿宋} \\
+	\verb|\kaishu| & {\kaishu 楷书} \\
 \end{tabular}
-
 
 \section{字号调节}
 字号命令: \verb|\zihao|
 
 \begin{tabular}{ll}
-\verb|\zihao{0}| &\zihao{0}  初号字 English \\
-\verb|\zihao{-0}|&\zihao{-0} 小初号 English \\
-\verb|\zihao{1} |&\zihao{1}  一号字 English \\
-\verb|\zihao{-1}|&\zihao{-1} 小一号 English \\
-\verb|\zihao{2} |&\zihao{2}  二号字 English \\
-\verb|\zihao{-2}|&\zihao{-2} 小二号 English \\
-\verb|\zihao{3} |&\zihao{3}  三号字 English \\
-\verb|\zihao{-3}|&\zihao{-3} 小三号 English  \\
-\verb|\zihao{4} |&\zihao{4}  四号字 English  \\
-\verb|\zihao{-4}|&\zihao{-4} 小四号 English \\
-\verb|\zihao{5} |&\zihao{5}  五号字 English \\
-\verb|\zihao{-5}|&\zihao{-5} 小五号 English \\
-\verb|\zihao{6} |&\zihao{6}  六号字 English \\
-\verb|\zihao{-6}|&\zihao{-6} 小六号 English \\
-\verb|\zihao{7} |&\zihao{7}  七号字 English \\
-\verb|\zihao{8} |&\zihao{8}  八号字 English \\
+	\verb|\zihao{0}| &\zihao{0}  初号字 English \\
+	\verb|\zihao{-0}|&\zihao{-0} 小初号 English \\
+	\verb|\zihao{1} |&\zihao{1}  一号字 English \\
+	\verb|\zihao{-1}|&\zihao{-1} 小一号 English \\
+	\verb|\zihao{2} |&\zihao{2}  二号字 English \\
+	\verb|\zihao{-2}|&\zihao{-2} 小二号 English \\
+	\verb|\zihao{3} |&\zihao{3}  三号字 English \\
+	\verb|\zihao{-3}|&\zihao{-3} 小三号 English  \\
+	\verb|\zihao{4} |&\zihao{4}  四号字 English  \\
+	\verb|\zihao{-4}|&\zihao{-4} 小四号 English \\
+	\verb|\zihao{5} |&\zihao{5}  五号字 English \\
+	\verb|\zihao{-5}|&\zihao{-5} 小五号 English \\
+	\verb|\zihao{6} |&\zihao{6}  六号字 English \\
+	\verb|\zihao{-6}|&\zihao{-6} 小六号 English \\
+	\verb|\zihao{7} |&\zihao{7}  七号字 English \\
+	\verb|\zihao{8} |&\zihao{8}  八号字 English \\
 \end{tabular}
 
+同时，全文正文的默认字体为小四号，除使用 \verb|\zihao| 直接控制字号外，也可使用\verb|\small|等标准字体命令进行控制，相关大小参考图~\ref{fig-cor-font}。
 
-
-\section{已加入的常用宏包}
-
-\begin{description}
-%  \item[amsmath,amssymb]
-  \item[cite]  参考文献引用, 得到形如 [3-7] 的样式.
-  \item[color,xcolor]  支持彩色.
-  \item[enumerate]  方便自由选择 enumerate 环境的编号方式. 比如
-
-  \verb|\begin{enumerate}[(a)]| 得到形如 (a), (b), (c) 的编号.
-
-  \verb|\begin{enumerate}[i)]| 得到形如 i), ii), iii) 的编号.
-
-\end{description}
-
-另外要说明的是,  itemize, enumerate, description 这三种 list 环境, 已经调节了其间距和缩进,
-以符合中文书写的习惯.
-
-\section{标点符号的问题}
-
-建议使用半角的标点符号, 后边再键入一个空格. 特别是在英文书写中要注意此问题!
-
-使用半角也有不足的地方, 比如顿号出不来, 需要临时切换到全角. (当然也有输入法不需要切换, 比如紫光拼音, 可以直接用拼音输入逗号.)
-
-双引号是由两个左单引号、两个右单引号构成的: \verb|``  ''|. 左单引号在键盘上数字~1 的左边.
-
-但是, 无论您偏向于全角或半角, 强烈建议您使用实心的句号, 只要您书写的是自然科学的文章.
-原因可能是因为, 比如使用全角句号的句子结尾处的``$x$。''容易误为数学式~$x_0$(\verb|$x_0$|)吧.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=12cm]{zihao.jpg}
+	\vspace{5pt}
+	\caption{标准字体命令与字号的对应}
+	%英文标题begin
+	\addtocounter{figure}{-1}
+	%\vspace{-5pt}
+	%\SetEnglishCaption
+	\renewcommand{\figurename}{Figure}
+	\caption{Correspondence between standard font commands and font sizes}
+	\renewcommand{\figurename}{图}
+	%英文标题end
+	\label{fig-cor-font}
+\end{figure}
 
 \section{中英文间距问题}
 
-自动加入间距. 不再需要在公式、英文前后加字符``\verb|~|''或空格.
+自动加入间距. 不再需要在公式、英文前后加字符``\verb|~|''或空格。
 
 \section{引用的问题}
 
 
 \subsection{参考文献的引用}
-
-参考文献的引用, 用命令~\verb|\cite{ }|. 大括号内要填入的字串, 是自命名的文献条目名.
+参考文献的引用, 用命令~\verb|\cite{ }|. 大括号内要填入的字串, 是自命名的文献条目名。
 
 比如, 通常我们会说:
 
- {\kaishu
-关于此问题, 请参见文献 \cite{r2}. 作者某某还提到了某某概念\upcite{r1}.}
+{\kaishu
+	关于此问题, 请参见文献 \cite{CNNIC202249}. 作者某某还提到了某某概念\upcite{林耘森箫2019基于}.}
 
 
 上文使用的源文件为:
 
- {\kaishu
-关于此问题, 请参见文献~\verb|\cite{r2}|. 作者某某还提到了某某概念~\verb|\upcite{r1}|.
+{\kaishu
+	关于此问题, 请参见文献~\verb|\cite{CNNIC202249}|. 作者某某还提到了某某概念~\verb|\upcite{林耘森箫2019基于}|.
 }
 
-其中~\verb|\upcite| 是自定义命令, 使文献引用呈现为\textbf{上标形式}.
+其中~\verb|\upcite| 是自定义命令, 使文献引用呈现为上标形式。
 
-({\heiti 注意:} {\kaishu 这里文献的引用, 有时需要以上标形式出现, 有时需要作为正文文字出现.引用的序号以参考文件中~\verb|\bibitem|出现的顺序为准，可成文后再修改，只要大括号内的字串不变不影响正文的内容.引用相关的内容进行第二次编译才会生效})
+({\heiti 注意:} {\kaishu 这里文献的引用, 有时需要以上标形式出现, 有时需要作为正文文字出现, 为什么?})
 
-另外, 要得到形如~\cite{r1,r3,r4,r5} 的参考文献连续引用, 需要用到 cite 宏包(模板已经加入),
-在正文中使用~\verb|\cite{r1,r3,r4,r5}| 的引用形式即可.
-或者, 连续引用的上标形式: 使用~\verb|\upcite{r1,r2,r3}|, 得到\upcite{r1,r2,r3}.
+另外, 要得到形如~\cite{广西壮族自治区林业厅1993广西自然保护区,du2016overview,2018SYSTEMS,陈俊2020基于} 的参考文献连续引用, 需要用到 cite 宏包(模板已经加入),
+在正文中使用~\verb|\cite{r3,r4,r5,r6}| 的引用形式即可.
+或者, 连续引用的上标形式: 使用~\verb|\upcite{r1,r2,r5}|, 得到\upcite{CNNIC202249,林耘森箫2019基于,2018SYSTEMS}.
+
+\subsection{参考文献的格式}
+模版已经设置好了gbt7714引用格式，默认引用BIBbase格式下的Test-bibtex.bib文件，
+
+在Google Scholar或百度学术找到要引用的文献后点击"引用"然后点击“BibTeX”，复制到bib文件中即可。
+
+中文文献应手动添加一条内容：language = {zh},具体可参考给出的示例文件。
+
+注意，对于专利文件，百度学术引用的文件类型要手动改为~patent。对于会议文件，~booktitle选项应该补上前缀~Proceedings of
+
 
 \subsection{定理和公式的引用}
 
 \begin{theorem}[谁发现的]\label{th-abcd}
-最大的正整数是~$1$.
+	最大的正整数是~$1$.
 \end{theorem}
 
 \begin{proof}
-要找到这个最大的正整数, 我们设最大的正整数为~$x$, 则~$x \geqslant 1$, 两边同时乘以~$x$, 得到
-\begin{equation}\label{eq-abc}
-x^2 \geqslant x.
-\end{equation}
-而~$x$ 是最大的正整数, 由~\eqref{eq-abc} 式得到
-\[
-x^2 = x.
-\]
-所以
-\begin{equation}
-x = 1.
-\end{equation}
+	要找到这个最大的正整数, 我们设最大的正整数为~$x$, 则~$x \geqslant 1$, 两边同时乘以~$x$, 得到
+	\begin{equation}\label{eq-abc}
+		x^2 \geqslant x.
+	\end{equation}
+	而~$x$ 是最大的正整数, 由~\eqref{eq-abc} 式得到
+	\[
+	x^2 = x.
+	\]
+	所以
+	\begin{equation*}
+		x = 1.
+	\end{equation*}
 \end{proof}
-
-
 
 定理~\ref{th-abcd} 是一个重大的发现.
 
 %%%%----- 定义等环境的举例 --------
 \begin{definition}[整数]
- 正整数(例如 1, 2, 3)、负整数(例如 ${−1}$, $−2$, $−3$)与零(0)合起来统称为{\heiti 整数}.
+	正整数(例如 1, 2, 3)、负整数(例如 ${−1}$, $−2$, $−3$)与零(0)合起来统称为{\heiti 整数}.
 \end{definition}
 
 \begin{remark}
-  整数集合在数学上通常表示为 $\mathbf{Z}$ 或 $\mathbb{Z}$, 该记号源于德语单词 Zahlen(意为``数'')的首字母.
+	整数集合在数学上通常表示为 $\mathbf{Z}$ 或 $\mathbb{Z}$, 该记号源于德语单词 Zahlen(意为``数'')的首字母.
 \end{remark}
 
 \begin{proposition}
-任意两个整数相加、相减、相乘的结果, 仍然是整数.
+	任意两个整数相加、相减、相乘的结果, 仍然是整数.
 \end{proposition}
 
 \begin{example}
-  $1+2=3$.
+	$1+2=3$.
 \end{example}
 
 \begin{corollary}
-   在整数集合内, 相加、相减、相乘运算是封闭的.
+	在整数集合内, 相加、相减、相乘运算是封闭的.
 \end{corollary}
 
 \section{图形与表格}
@@ -337,132 +322,139 @@ x = 1.
 
 用形如 \verb|\includegraphics[width=12cm]{Daisy.jpg}| 的命令可以纳入图片.
 
-如图 \ref{fig:1} 是一个纳入~jpg 图片的例子.
+如图 \ref{fig:1} 是一个纳入~jpg 图片的例子，已经按要求做了中英文双行标题。
 
-\begin{figure}[h]
-\centering
-  \includegraphics[width=12cm]{Daisy.jpg}
-  \caption{一个彩色 jpg 图片的例子}
-  %英文标题begin
-  \addtocounter{figure}{-1}
-  \vspace{-5pt}
-  %\SetEnglishCaption
-  \renewcommand{\figurename}{Figure}
-  \caption{An example of a color jpg image}
-  \renewcommand{\figurename}{图}
-  \label{fig:1}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{Daisy.jpg}
+	\vspace{1pt}
+	\caption{一个彩色 jpg 图片的例子}
+	%英文标题begin
+	\addtocounter{figure}{-1}
+	%\vspace{-5pt}
+	%\SetEnglishCaption
+	\renewcommand{\figurename}{Figure}
+	\caption{An example of a color jpg image}
+	\renewcommand{\figurename}{图}
+	%英文标题end
+	\label{fig:1}
 \end{figure}
 
 表格问题, 建议使用``三线表'', 如表 \ref{tab:1}.
 
-\begin{table}[h]
-\centering
-\caption{一般三线表}
-%英文标题begin
-\addtocounter{table}{-1}
-\vspace{-5pt}
-%\SetEnglishCaption
-\renewcommand{\tablename}{Table}
-\caption{Three row table}
-\renewcommand{\tablename}{表}
-%英文标题end
-\label{tab:1}
-    \begin{tabular}{c c c c c c c c c c c}
-    \hline
-    123 & 4  & 5  & 123 & 4 & 5123 & 4 & 5 & 123 & 4 & 5\\
-    \hline
-    67 & 890 & 13 & 123 & 4 & 5123 & 4 & 5 & 123 & 4 & 5\\
-    67 & 890 & 13 & 123 & 4 & 5123 & 4 & 5 & 123 & 4 & 5\\
-    67 & 890 & 13 & 123 & 4 & 5123 & 4 & 5 & 123 & 4 & 5\\
-    \hline
-    \end{tabular}
+\begin{table}[ht]
+	\centering
+	\caption{一般三线表}
+	%英文标题begin
+	\addtocounter{table}{-1}
+	%\SetEnglishCaption
+	\renewcommand{\tablename}{Table}
+	\caption{General three-line table}
+	\renewcommand{\tablename}{表}
+	%英文标题end
+	\vspace{2pt}
+	\label{tab:1}
+	\begin{tabular}{c c c c c c c c c c c}
+		\hline
+		123 & 4  & 5  & 123 & 4 & 5123 & 4 & 5 & 123 & 4 & 5\\
+		\hline
+		67 & 890 & 13 & 123 & 4 & 5123 & 4 & 5 & 123 & 4 & 5\\
+		67 & 890 & 13 & 123 & 4 & 5123 & 4 & 5 & 123 & 4 & 5\\
+		67 & 890 & 13 & 123 & 4 & 5123 & 4 & 5 & 123 & 4 & 5\\
+		\hline
+	\end{tabular}
 \end{table}
 
-%\begin{table}[h]
-%  \centering
-%  \caption{调整线宽的三线表}\label{tab:2}
-%    \begin{tabular}{c c c c c c c c c c c}
-%    \hlinewd{0pt}
-%    姓名: &&&&年龄: &&&& 性别:\\
-%    \hlinewd{1.5pt}
-%    123 & 4  & 5  & 123 & 4 & 5123 & 4 & 5 & 123 & 4 & 5\\
-%    \hlinewd{1pt}
-%    67 & 890 & 13 & 123 & 4 & 5123 & 4 & 5 & 123 & 4 & 5\\
-%    67 & 890 & 13 & 123 & 4 & 5123 & 4 & 5 & 123 & 4 & 5\\
-%    67 & 890 & 13 & 123 & 4 & 5123 & 4 & 5 & 123 & 4 & 5\\
-%    \hlinewd{1.5pt}
-%    \end{tabular}
-%\end{table}
+此外，还可以插入子图，,引用时效果图~\ref{fig-subfigure}，第2张子图可使用图~\ref{fig-subfigure}\subref{fig-subfigure2}进行引用，排版通过控制子图宽度控制。
 
-%\section{论文电子版提交的格式问题}
-%
-%《武汉大学博、硕士研究生学位论文缴送办法》要求``电子版应采用~Word97 或~Word2000 格式(DOC)编辑''\footnote{那已经是~2005 年的事情了.}.
-%关于这个重要的问题, 我已致信武汉大学图书馆总馆信息服务中心袁晓川老师,
-%得到的答复是: ``用~\LaTeX{} 软件排版的论文可直接提交~PDF 格式.''
+\begin{figure}[H]
+	\centering
+	\subfigure{\label{fig-subfigure1}}\addtocounter{subfigure}{-2}\subfigure[Subfigure1]{\subfigure[子图1]{
+			\includegraphics[width=6cm]{Subfigure1.jpg}
+	}}
+	\quad
+	\subfigure{\label{fig-subfigure2}}\addtocounter{subfigure}{-2}\subfigure[Subfigure2]{\subfigure[子图2]{
+			\includegraphics[width=6cm]{Subfigure2.jpg}
+	}}
+	\subfigure{\label{fig-subfigure3}}\addtocounter{subfigure}{-2}\subfigure[Subfigure3]{\subfigure[子图3]{
+			\includegraphics[width=6cm]{Subfigure3.jpg}
+	}}
+	\subfigure{\label{fig-subfigure4}}\addtocounter{subfigure}{-2}\subfigure[Subfigure4]{\subfigure[子图4]{
+			\includegraphics[width=6cm]{Subfigure4.jpg}
+	}}
+	\caption{子图的使用}
+	%英文标题begin
+	\addtocounter{figure}{-1}
+	%\vspace{-5pt}
+	%\SetEnglishCaption
+	\renewcommand{\figurename}{Figure}
+	\caption{Use of subgraphs}
+	\renewcommand{\figurename}{图}
+	%英文标题endmod-str
+	\label{fig-subfigure}
+\end{figure}
+
+\section{算法写法}
+
+算法的书写使用\verb|breakablealgorithm|环境，该自定义环境使得算法支持跨页（不再使用\verb|\begin{table}[htbp]|控制定位），效果如下：
+\begin{breakablealgorithm}%[h]
+	\caption{ 算法示例} 
+	\label{alg:flow-table-del} 
+	%\resizebox{.95\columnwidth}{!}{
+		\begin{algorithmic}[1] %这个1 表示每一行都显示数字
+			\Require 第一个输入$a$\Comment{注释这么写}\newline 第2个输入$b$  \Comment{这么换行}%算法的输入参数：Input
+			\Ensure 输出$y$	%算法的输出：Output
+			\If{ a>b} 
+			\State 结果
+			\Else
+			\While {a<b}
+			\State 内容
+			\EndWhile
+			\EndIf
+			\State \Return $y$%算法的返回值
+		\end{algorithmic}
+		%}
+\end{breakablealgorithm}
+
+\section{手动排版}
+
+对于图片和表格，一般使用形如\verb|\begin{figure}[ht]| 、\verb|\begin{table}[ht]|进行自动排版，即优先在上下文位置，如果放不下则插在其他页顶。如果需要强制在当前位置，可以将\verb|[ht]| 改为\verb|[H]| 
+		
+此外，形如\verb|\vspace{2pt}|也可以用于灵活调整排版，用于手动修正。
+
+\chapter{论文提交}
+
+一般来说提交论文共（给导师）、盲审、（打印）答辩、图书馆四个版本。
+
+当前版本下，盲审时注意编译模版隐去个人信息。
 
 
+\section*{电子版论文提交}
+
+进入研究生论文提交系统(\url{http://xwlw.lib.njtech.edu.cn/changeMain.action})点击``论文提交'', 进入论文提交系统。
+论文提交成功的 3 个工作日后, 可前往图书馆办理离校手续。
 
 
+\section*{纸本论文提交}
 
-
-
-\chapter{其他事项}
-以下是广告时间, 插播一段广告:
-\begin{itemize}
-    \item 插图的制作, 建议 pgf.
-          pgf 的长处是源文件直接植入~\TeX~文档, 管理起来非常方便.
-    这里有我写的一个关于初次使用~pgf~的帖子:\\    \url{http://bbs.ctex.org/forum.php?mod=viewthread&tid=30480}.
-    \item 生成参考文献, 建议使用~BibTeX.  这里有我写的一个文档: \\
-    \url{http://bbs.ctex.org/forum.php?mod=viewthread&tid=26056}.
-
-      {\kaishu 使用 BibTeX{} 做参考文献时,
-      借助 EndNote 或者 NoteExpress, 可以非常漂亮简单地解决 bib 文件的录入问题.
-      NoteExpress 在校图书馆网站有正版软件提供下载.
-      当然 EndNote 本身就是 Thomson Corporation 推出的(和 SCI 搜索引擎是同一家公司),
-      和多个重要文献搜索引擎有良好的功能配合.
-
-      Google 学术搜索也提供了文献的 bib 格式.
-      录入参考文献时, 偶尔用一用 Google 学术搜索, 还可以核查或减少录入的错误, 并减少录入的工作量.}
-     \item 幻灯片的制作, 建议使用~Beamer. 这里有我写的一个模板, 谨供参考:\\
-    \url{http://bbs.ctex.org/forum.php?mod=viewthread&tid=27695}.
-\end{itemize}
-
-
-
-
-
+电子版论文提交审核通过的, 请提交 1 份纸本论文到相应的论文纸本进学位档案，记得导师签字。
 
 %%%=== 参考文献 ========%%%
-\cleardoublepage\phantomsection
+\phantomsection
 \addcontentsline{toc}{chapter}{参考文献}
-\begin{thebibliography}{000}\zihao{5}
-	\thispagestyle{onlytitle}
-	
-  \bibitem{r2} 作者, 书名, 年份, 版次, 出版地: 出版单位, 起止页码
+\zihao{5}%参考文献用五号字
+\bibliography{BIBbase/Test-bibtex}
 
-  \bibitem{r1} 作者, 文章题目, 期刊名, 年份(期数): 起止页码
+\ifprint
+\cleardoublepage 
+\fi
 
-
-
-  \bibitem{r3} 邓建松等, 《\LaTeXe~科技排版指南》, 科学出版社
-
-  \bibitem{r4} 吴凌云, 《CTeX~FAQ (常见问题集)》, \textit{Version~0.4}, June 21, 2004
-
-  \bibitem{r5} Herbert Vo\ss, Mathmode, \url{http://www.tex.ac.uk/ctan/info/math/voss/mathmode/Mathmode.pdf}.
-
-\end{thebibliography}
-
-
-
-
-
-
-
-
+\normalsize%后面的奖项、致谢恢复小四号字
 \backmatter
 \include{includefile/backmatter} %%%攻读硕士学位期间参加的科研项目,学术成果,奖项,致谢．
-\cleardoublepage
+%\cleardoublepage
 \end{document}
+
 
 
 
